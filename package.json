@@ -1,0 +1,18 @@
+{
+  "name": "expressjs-test",
+  "packageManager": "yarn@4.6.0",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.1",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "dev": "nodemon src/app.ts",
+    "build": "tsc"
+  }
+}
