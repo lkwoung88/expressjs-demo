@@ -10,7 +10,7 @@ src/
  ├── route/   
  ├── model/   
  ├── middleware/   
- └── app.ts
+ └── app.ts    
  test/
 
 ## Getting Started
