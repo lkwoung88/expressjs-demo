@@ -5,14 +5,19 @@
     "express": "^4.21.2"
   },
   "devDependencies": {
+    "@types/chai": "^5.0.1",
     "@types/express": "^5.0.0",
+    "@types/mocha": "^10.0.10",
     "@types/node": "^22.13.1",
+    "chai": "^5.1.2",
+    "mocha": "^11.1.0",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   },
   "scripts": {
     "dev": "nodemon src/app.ts",
+    "test": "mocha -r ts-node/register 'test/**/*.test.ts'",
     "build": "tsc"
   }
 }
