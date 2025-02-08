@@ -12,6 +12,10 @@ src/
  ├── middleware/   
  └── app.ts    
  test/
+ ├── controller/   
+ ├── route/   
+ ├── model/   
+ └── middleware/   
 
 ## Getting Started
 
