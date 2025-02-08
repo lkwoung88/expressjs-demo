@@ -11,7 +11,7 @@ src/
  ├── model/   
  ├── middleware/   
  └── app.ts    
- test/
+ test/   
  ├── controller/   
  ├── route/   
  ├── model/   
