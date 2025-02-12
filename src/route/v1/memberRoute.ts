@@ -1,4 +1,4 @@
-import {Request, Response} from 'express';
+import {NextFunction, Request, Response} from 'express';
 
 const express = require('express');
 const router = express.Router();
@@ -10,6 +10,14 @@ interface Member {
 }
 
 const membersMemory = new Map<string, Member>();
+
+router.use((req: Request, res: Response, next: Function) => {
+    console.log('user api is called 🤩');
+    next();
+}, (req: Request, res: Response, next: Function) => {
+    console.log('next middleware 🤩');
+    next();
+});
 
 router.get('/:page', (req: Request, res: Response) => {
 
@@ -41,5 +49,10 @@ router.delete('/:id', (req: Request, res: Response) => {
     membersMemory.delete(deletedId);
     res.status(200).send({message: 'Member is deleted'});
 });
+
+router.get('/test/error', (req: Request, res: Response, next: NextFunction) => {
+    throw new Error('Error occurred');
+});
+
 
 export default router;
