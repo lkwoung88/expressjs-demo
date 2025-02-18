@@ -2,10 +2,12 @@
   "name": "expressjs-test",
   "packageManager": "yarn@4.6.0",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.21.2"
   },
   "devDependencies": {
     "@types/chai": "^5.0.1",
+    "@types/ejs": "^3",
     "@types/express": "^5.0.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.13.1",
