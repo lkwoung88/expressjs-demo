@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SignIn - Retro Currency Converter</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-menu">
+            <div class="nav-left"></div>
+            <div class="nav-center">
+                <a href="/" class="nav-logo">¥€$</a>
+            </div>
+            <div class="nav-right">
+            </div>
+        </nav>
+
+        <main class="signin-container">
+            <h2>SIGNIN</h2>
+            <div class="retro-line"></div>
+
+            <form action="/auth/signin" method="POST" class="signin-form">
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="convert-btn">signin</button>
+            </form>
+
+            <p class="auth-switch">"Don't have an account yet? <a href="/member/signup">signup here</a></p>
+        </main>
+
+        <footer>
+            <div class="retro-line"></div>
+            <p>© <%= new Date().getFullYear() %> Retro Currency Converter</p>
+            <p class="vintage-text">Best viewed with Netscape Navigator</p>
+        </footer>
+    </div>
+</body>
+</html>
