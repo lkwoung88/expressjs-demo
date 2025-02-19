@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Retro Currency Converter</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+
+        <nav class="nav-menu">
+            <div class="nav-left"></div>
+            <div class="nav-center">
+                <a href="/" class="nav-logo">¥€$</a>
+            </div>
+            <div class="nav-right">
+                <a href="/auth/signin" class="nav-link">SIGN IN</a>
+                <a href="/member/signup" class="nav-link">SIGN UP</a>
+            </div>
+        </nav>
+
+        <header>
+            <h1>$ Currency Converter $</h1>
+            <div class="retro-line"></div>
+        </header>
+
+        <main>
+            <form action="/currency/convert" method="POST" class="converter-form">
+                <div class="input-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" value="<%= result ? result.amount : '1000' %>" required>
+                </div>
+
+                <div class="currency-selectors">
+                    <div class="select-group">
+                        <label for="fromCurrency">From:</label>
+                        <select id="fromCurrency" name="fromCurrency">
+                            <% Object.keys(rates).forEach(currency => { %>
+                                <option value="<%= currency %>"
+                                        <%= result && result.fromCurrency === currency ? 'selected' : '' %>>
+                                    <%= currency %>
+                                </option>
+                            <% }); %>
+                        </select>
+                    </div>
+
+                    <div class="swap-icon">⇄</div>
+
+                    <div class="select-group">
+                        <label for="toCurrency">To:</label>
+                        <select id="toCurrency" name="toCurrency">
+                            <% Object.keys(rates).forEach(currency => { %>
+                                <option value="<%= currency %>"
+                                    <%= result && result.toCurrency === currency ? 'selected' : '' %>>
+                                    <%= currency %>
+                                </option>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="convert-btn">Convert</button>
+            </form>
+
+            <% if (result) { %>
+                <div class="result">
+                    <div class="result-box">
+                        <%= result.amount %> <%= result.fromCurrency %> =
+                        <span class="result-value"><%= result.value %> <%= result.toCurrency %></span>
+                    </div>
+                    <div class="rate-info">
+                        1 <%= result.fromCurrency %> =
+                        <%= (rates[result.toCurrency] / rates[result.fromCurrency]).toFixed(4) %>
+                        <%= result.toCurrency %>
+                    </div>
+                </div>
+            <% } %>
+        </main>
+
+        <footer>
+            <div class="retro-line"></div>
+            <p>© <%= new Date().getFullYear() %> Currency Converter</p>
+            <p class="vintage-text">expressjs demo</p>
+        </footer>
+    </div>
+</body>
+</html>
