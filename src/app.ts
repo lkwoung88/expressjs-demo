@@ -6,6 +6,7 @@ import logging from "./middleware/logging";
 import {exchangeRates} from "./models/exchangeRates";
 import path from "node:path";
 import {HttpError} from "./type/CustomError";
+import session from "express-session";
 
 const express = require('express');
 const app: Express = express();
@@ -18,6 +19,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logging);
+app.use(session({
+    secret: 'currency',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // https를 사용하지 않을 때는 false
+}));
 
 app.use('/member', memberRouter);
 app.use('/currency', currencyRouter);

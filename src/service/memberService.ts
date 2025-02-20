@@ -8,7 +8,7 @@ exports.signup = async (username: string, email: string, password: string) => {
             const newMember = await Member.create({
                 username,
                 email,
-                password: bcrypt.hashSync(password, username),
+                password: bcrypt.hashSync(password, 10),
             }, { transaction: t });
 
             return newMember;
