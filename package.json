@@ -2,8 +2,11 @@
   "name": "expressjs-test",
   "packageManager": "yarn@4.6.0",
   "dependencies": {
+    "@types/express-validator": "^3.0.2",
     "bcrypt": "^5.1.1",
+    "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "express-validator": "^7.2.1",
     "pg": "^8.13.3",
     "pg-hstore": "^2.3.4",
     "pg-promise": "^11.10.2",
@@ -12,6 +15,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5",
     "@types/chai": "^5.0.1",
+    "@types/ejs": "^3",
     "@types/express": "^5.0.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.13.4",

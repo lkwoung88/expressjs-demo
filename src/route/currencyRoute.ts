@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from 'express';
-import {exchangeRates} from "../../model/exchangeRates";
+import {exchangeRates} from "../models/exchangeRates";
 
 const express = require('express');
 const router = express.Router();
