@@ -1,10 +1,11 @@
 import {Express, NextFunction, Request, Response} from 'express';
-import memberRouter from "./route/v1/memberRoute"
-import currencyRouter from "./route/v1/currencyRoute";
-import authRouter from "./route/v1/authRoute";
+import memberRouter from "./route/memberRoute"
+import currencyRouter from "./route/currencyRoute";
+import authRouter from "./route/authRoute";
 import logging from "./middleware/logging";
-import {exchangeRates} from "./model/exchangeRates";
+import {exchangeRates} from "./models/exchangeRates";
 import path from "node:path";
+import {HttpError} from "./type/CustomError";
 
 const express = require('express');
 const app: Express = express();
@@ -26,13 +27,29 @@ app.listen(port, () => {
     console.log(`🔥 Server is running at http://localhost:${port}`);
 });
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!❤️‍🩹');
-})
-
 app.get('/', (req: Request, res: Response) => {
     res.render('index', { rates: exchangeRates, result: null });
+});
+
+app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
+    if (err.statusCode === 403) {
+        console.error('403 에러 발생:', err.message);
+        return res.status(403).render('403');
+    }
+    next(err);
+});
+
+app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
+    if (err.statusCode === 404) {
+        console.error('404 에러 발생:', err.message);
+        return res.status(404).render('404');
+    }
+    next();
+});
+
+app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
+    console.error('500 에러 발생:', err.message, err.stack);
+    res.status(500).render('500');
 });
 
 export default app;

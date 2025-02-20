@@ -40,7 +40,7 @@
                     <input type="password" id="confirm-password" name="confirmPassword" required>
                 </div>
 
-                <button type="submit" class="convert-btn">Sign Up</button>
+                <button type="submit" class="convert-btn" onclick="return validatePasswords()">Sign Up</button>
             </form>
 
             <p class="auth-switch">Already have an account? <a href="/auth/signin">signin here</a></p>
@@ -52,5 +52,24 @@
             <p class="vintage-text">Best viewed with Netscape Navigator</p>
         </footer>
     </div>
+<script>
+    function validatePasswords() {
+        if(document.getElementById("username").value.length < 3) {
+            alert("사용자 이름은 3자 이상이어야 합니다.");
+            return false;
+        }
+        if(document.getElementById("password").value.length < 6) {
+            alert("패스워드는 6자 이상이어야 합니다.");
+            return false;
+        }
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirm-password").value;
+        if (password !== confirmPassword) {
+            alert("패스워드, 패스워드 확인이 일치하지 않습니다.");
+            return false;
+        }
+        return true;
+    }
+</script>
 </body>
 </html>

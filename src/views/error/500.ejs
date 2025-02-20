@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>500 - Internal Server Error</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container error-page">
+        <nav class="nav-menu">
+            <div class="nav-left"></div>
+            <div class="nav-center">
+                <a href="/" class="nav-logo">¥€$</a>
+            </div>
+            <div class="nav-right">
+                <a href="/login" class="nav-link">LOGIN</a>
+                <a href="/signup" class="nav-link">SIGN UP</a>
+            </div>
+        </nav>
+
+        <main class="error-content">
+            <h1 class="error-code">500</h1>
+            <div class="retro-line"></div>
+            <h2 class="error-message">Internal Server Error</h2>
+            <p>Oops! Something went wrong on our end. Please try again later.</p>
+            <a href="/" class="error-home-link">Return to Home</a>
+        </main>
+
+        <footer>
+            <div class="retro-line"></div>
+            <p>© <%= new Date().getFullYear() %> Retro Currency Converter</p>
+            <p class="vintage-text">Best viewed with Netscape Navigator</p>
+        </footer>
+    </div>
+</body>
+</html>
