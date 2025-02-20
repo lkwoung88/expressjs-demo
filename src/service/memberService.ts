@@ -1,5 +1,6 @@
 import sequelize from '../config/database';
 import { Member } from '../models/member';
+import bcrypt from 'bcrypt';
 
 exports.signup = async (username: string, email: string, password: string) => {
     try {
@@ -7,7 +8,7 @@ exports.signup = async (username: string, email: string, password: string) => {
             const newMember = await Member.create({
                 username,
                 email,
-                password // TODO: 비밀번호 암호화
+                password: bcrypt.hashSync(password, 10),
             }, { transaction: t });
 
             return newMember;

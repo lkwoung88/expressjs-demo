@@ -14,8 +14,8 @@ router.post('/signup', [
     body("username", "username is required").not().isEmpty().trim().isLength({ min: 3 }),
     body("email", "email is required").not().isEmpty().isEmail().normalizeEmail(),
     body("password", "password is required").not().isEmpty().trim().isLength({ min: 6 }),
-    body("passwordconfirm", "password confirmation is required").not().isEmpty().trim().custom((value: string, { req }) => {
-        if (value !== req.body.password) {
+    body("confirmPassword", "password confirmation is required").not().isEmpty().trim().custom((value: string, { req }) => {
+        if (req.body.confirmPassword !== req.body.password) {
             throw new Error("Passwords do not match");
         }
         return true;
@@ -23,15 +23,10 @@ router.post('/signup', [
 ],(req: Request, res: Response, next: NextFunction) => {
     const errors: Result<ValidationError> = validationResult(req);
     if (!errors.isEmpty()) {
+        console.log(errors.array());
         return res.status(400).render('signup', { errors: errors.array() });
     }
     next();
 }, (memberController.signup));
-
-interface Member {
-    id: string;
-    password: string;
-    name: string;
-}
 
 export default router;
