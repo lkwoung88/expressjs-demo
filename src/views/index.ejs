@@ -28,7 +28,7 @@
             <form action="/currency/convert" method="POST" class="converter-form">
                 <div class="input-group">
                     <label for="amount">Amount:</label>
-                    <input type="number" id="amount" name="amount" value="<%= result ? result.amount : '1000' %>" required>
+                    <input type="number" id="amount" name="amount" value="<%= result ? result.amount : '1000' %>" min="0" required>
                 </div>
 
                 <div class="currency-selectors">
@@ -80,6 +80,7 @@
         <footer>
             <div class="retro-line"></div>
             <p>© <%= new Date().getFullYear() %> Currency Converter</p>
+            <a href="https://www.exchangerate-api.com">Rates By Exchange Rate API</a>
             <p class="vintage-text">expressjs demo</p>
         </footer>
     </div>
