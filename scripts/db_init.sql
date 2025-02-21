@@ -4,8 +4,8 @@ create table members
     username varchar(50),
     email varchar(320),
     password varchar(255),
-    createdat varchar(32),
-    updatedat varchar(32)
+    created_at varchar(32),
+    updated_at varchar(32)
 );
 
 alter table members
