@@ -1,14 +1,14 @@
 // Sample exchange rates
-export const exchangeRates: { [key: string]: number; } = {
-    USD: 1,
-    KRW: 1315.24,
-    JPY: 150.15,
-    EUR: 0.92,
-    GBP: 0.79,
-    CNY: 7.19,
-    VND: 23195.00,
-    THB: 31.25,
-    AUD: 1.55,
-    NZD: 1.68,
-    CAD: 1.36,
+export const exchangeRates: { [key: string]: string; } = {
+    USD: 'united states dollar',
+    KRW: 'south korean won',
+    JPY: 'japanese yen',
+    EUR: 'euro',
+    GBP: 'british pound',
+    CNY: 'chinese yuan',
+    VND: 'vietnamese dong',
+    THB: 'thai baht',
+    AUD: 'australian dollar',
+    NZD: 'new zealand dollar',
+    CAD: 'canadian dollar',
 };

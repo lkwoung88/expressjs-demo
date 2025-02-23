@@ -5,7 +5,7 @@ import authRouter from "./route/authRoute";
 import logging from "./middleware/logging";
 import {exchangeRates} from "./models/exchangeRates";
 import path from "node:path";
-import {HttpError} from "./type/CustomError";
+import {HttpError} from "./types/CustomError";
 import session from "express-session";
 
 const express = require('express');

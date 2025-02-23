@@ -1,6 +1,6 @@
 import {Member} from "../models/member";
 import bcrypt from "bcrypt";
-import {HttpError} from "../type/CustomError";
+import {HttpError} from "../types/CustomError";
 
 exports.signin = async (username: string, password: string): Promise<Member> => {
     try {
@@ -17,6 +17,9 @@ exports.signin = async (username: string, password: string): Promise<Member> => 
 
         return member;
     } catch (error) {
+        console.error(error);
         throw new HttpError(500, '로그인 중 오류 발생');
     }
 }
+
+export default exports;

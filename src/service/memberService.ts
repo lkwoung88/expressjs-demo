@@ -19,3 +19,5 @@ exports.signup = async (username: string, email: string, password: string) => {
         throw error;
     }
 };
+
+export default exports;

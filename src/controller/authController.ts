@@ -1,6 +1,6 @@
 import {NextFunction, Request, Response} from 'express';
-
-const authService = require('../service/authService');
+import authService from '../service/authService';
+import {SessionData} from "express-session";
 
 exports.signin = async (req: Request, res: Response) => {
     const {username, password} = req.body;
