@@ -4,16 +4,22 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const database = process.env.DB_DATABASE || '';
-const username = process.env.DB_USER || '';
-const password = process.env.DB_PASSWORD || '';
-const host = process.env.DB_HOST || '';
-const port : number = parseInt(process.env.DB_PORT || '0000');
+const dbenv: NodeJS.ProcessEnv = {
+    DB_DATABASE: process.env.DB_DATABASE ?? '',
+    DB_USER: process.env.DB_USER ?? '',
+    DB_PASSWORD: process.env.DB_PASSWORD ?? '',
+    DB_HOST: process.env.DB_HOST ?? '',
+    DB_PORT: process.env.DB_PORT ?? '5432',
+}!;
 
-const sequelize = new Sequelize(database, username, password, {
-    host: host,
+if (!dbenv.DB_DATABASE || !dbenv.DB_USER || !dbenv.DB_PASSWORD || !dbenv.DB_HOST) {
+    throw new Error('One or more required environment variables are missing.');
+}
+
+const sequelize = new Sequelize(dbenv.DB_DATABASE, dbenv.DB_USER, dbenv.DB_PASSWORD, {
+    host: dbenv.DB_HOST,
     dialect: 'postgres',
-    port: port,
+    port: dbenv.DB_PORT ? parseInt(dbenv.DB_PORT) : 5432,
     logging: true,
     define: {
         underscored: true,

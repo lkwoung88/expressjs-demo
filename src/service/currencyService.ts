@@ -1,6 +1,7 @@
-import {ExchangeRateResponse} from "../type/apiResponseSchema";
+import {ExchangeRateResponse} from "../types/apiResponseSchema";
 
 const apikey = process.env.CURRENCY_API_KEY;
+
 exports.convert = async (amount: number, fromCurrency: string, toCurrency: string) => {
     const rate = await getExchangeRates(fromCurrency, toCurrency);
     return amount * rate;
@@ -11,3 +12,5 @@ const getExchangeRates = async (baseCurrency: string, targetCurrency: string): P
     const data: ExchangeRateResponse = await response.json();
     return data.conversion_rates[targetCurrency as keyof typeof data.conversion_rates];
 }
+
+export default exports;
